@@ -423,6 +423,7 @@ function buildMode:Init(dbFileName, buildName, buildXML, convertBuild, importLin
 		{ stat = "ExplodeChance", label = "Total Explode Chance", fmt = ".0f%%" },
 		{ stat = "CombinedAvgToMonsterLife", label = "Enemy Life Equivalent", fmt = ".1f%%" },
 		{ stat = "Cooldown", label = "Skill Cooldown", fmt = ".3fs", lowerIsBetter = true },
+		{ stat = "RetaliationUseWindowDuration", label = "Use Window Duration", fmt = ".2fs", compPercent = true },
 		{ stat = "SealCooldown", label = "Seal Gain Frequency", fmt = ".2fs", lowerIsBetter = true },
 		{ stat = "SealMax", label = "Max Number of Seals", fmt = "d" },
 		{ stat = "TimeMaxSeals", label = "Time to Gain Max Seals", fmt = ".2fs", lowerIsBetter = true },

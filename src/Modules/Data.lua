@@ -177,6 +177,7 @@ data.misc = { -- magic numbers
 	MineDetonationRadiusBase = 60,
 	MineAuraRadiusBase = 35,
 	BrandAttachmentRangeBase = 30,
+	BaseRetaliationUseWindowDuration = 2,
 	ProjectileDistanceCap = 150,
 	MinStunChanceNeeded = 20,
 	StunBaseMult = 200,

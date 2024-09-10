@@ -1108,6 +1108,23 @@ function calcs.offence(env, actor, activeSkill)
 			breakdown.CurseEffectMod = breakdown.mod(skillModList, skillCfg, "CurseEffect")
 		end
 	end
+	if activeSkill.skillTypes[SkillType.Retaliation] then
+		local baseWindow = data.misc.BaseRetaliationUseWindowDuration
+		local additionalBase = skillModList:Sum("BASE", skillCfg, "RetaliationUseWindowDuration") or 0
+		local inc = skillModList:Sum("INC", skillCfg, "RetaliationUseWindowDuration") or 0
+		output.RetaliationUseWindowDuration = (baseWindow + additionalBase) * (1 + inc / 100)
+		if breakdown then
+			breakdown.RetaliationUseWindowDuration = {}
+			if additionalBase ~= 0 then
+				t_insert(breakdown.RetaliationUseWindowDuration, s_format("(%g + %g) ^8(base)", baseWindow, additionalBase))
+			else
+				t_insert(breakdown.RetaliationUseWindowDuration, s_format("%g ^8(base)", baseWindow))
+			end
+			if inc ~= 0 then
+				t_insert(breakdown.RetaliationUseWindowDuration, s_format("x %.2f", 1 + inc/100).." ^8(increased/reduced)")
+			end
+		end
+	end
 	if activeSkill.skillTypes[SkillType.Warcry] then
 		local full_duration = calcSkillDuration(skillModList, skillCfg, activeSkill.skillData, env, enemyDB)
 		local cooldownOverride = skillModList:Override(skillCfg, "CooldownRecovery")
